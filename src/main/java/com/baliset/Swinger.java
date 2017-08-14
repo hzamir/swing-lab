@@ -6,6 +6,7 @@ import com.baliset.tabledemo.*;
 import com.baliset.ui.controls.snake.SnakeTable;
 import com.baliset.ui.controls.snake.SnakeTableModel;
 import com.baliset.ui.controls.tablex.*;
+import com.baliset.util.*;
 import com.jidesoft.grid.TableSelectionModel;
 
 import javax.swing.*;
@@ -33,8 +34,16 @@ public class Swinger extends JFrame
 
     private ArrayList<MyTableModel> btms_;
 
+    private final static String license1="fuqTdIv4Ny1bhMIotSxZag==";
+    private final static String license2="Dd9raTIowYywX2dkoPyH1xsV8Fi2Q6SPuZdleTnos0o=";
+    private final static String license3="M1rYZfbuel6M16i5CvKxWquu56C9o/s2z0GPTv2i61NM4NPVHzx0AE5D6Fgq6/ec";
+
+
+
     static {
-        com.jidesoft.utils.Lm.verifyLicense("GFI Group", "GFI Group Development", "UClzjlwjp46BiC1m1b0Pfc7x4LIqdTY1");
+        Crypto crypto = new Crypto("afsd0afsl-2494");
+
+        com.jidesoft.utils.Lm.verifyLicense(crypto.decryptString(license1), crypto.decryptString(license2), crypto.decryptString(license3));
     }
 
     public Swinger(int initialRows,
