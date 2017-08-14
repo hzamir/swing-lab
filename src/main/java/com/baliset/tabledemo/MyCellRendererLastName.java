@@ -9,20 +9,21 @@ import java.awt.*;
 
 public class MyCellRendererLastName extends DefaultTableCellRenderer
 {
-    private static final Color sColor = new Color(0,128,0);
-    @Override
-    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
-    {
-        Component comp = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+  private static final Color sColor = new Color(0, 128, 0);
 
-        JLabel jl = (JLabel)comp;
+  @Override
+  public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
+  {
+    Component comp = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
-        if (value != null && value != NullCell.sNullObject) {
-            Item item = (Item) value;
-            jl.setForeground(sColor);
-            jl.setBackground(Color.white);
-            jl.setText(item.getLast());
-        }
-        return comp;    //To change body of overridden methods use File | Settings | File Templates.
+    JLabel jl = (JLabel) comp;
+
+    if (value != null && value != NullCell.sNullObject) {
+      Item item = (Item) value;
+      jl.setForeground(sColor);
+      jl.setBackground(Color.white);
+      jl.setText(item.getLast());
     }
+    return comp;    //To change body of overridden methods use File | Settings | File Templates.
+  }
 }

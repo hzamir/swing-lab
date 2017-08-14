@@ -8,23 +8,23 @@ import javax.swing.event.TableColumnModelListener;
 
 public class NullTableColumnModelListener implements TableColumnModelListener
 {
-    public void columnAdded(TableColumnModelEvent e)
-    {
-    }
+  public void columnAdded(TableColumnModelEvent e)
+  {
+  }
 
-    public void columnRemoved(TableColumnModelEvent e)
-    {
-    }
+  public void columnRemoved(TableColumnModelEvent e)
+  {
+  }
 
-    public void columnMoved(TableColumnModelEvent e)
-    {
-    }
+  public void columnMoved(TableColumnModelEvent e)
+  {
+  }
 
-    public void columnMarginChanged(ChangeEvent e)
-    {
-    }
+  public void columnMarginChanged(ChangeEvent e)
+  {
+  }
 
-    public void columnSelectionChanged(ListSelectionEvent e)
-    {
-    }
+  public void columnSelectionChanged(ListSelectionEvent e)
+  {
+  }
 }

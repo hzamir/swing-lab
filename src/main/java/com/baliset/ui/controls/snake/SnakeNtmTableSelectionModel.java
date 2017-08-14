@@ -7,15 +7,15 @@ import com.jidesoft.grid.JideTable;
 
 public class SnakeNtmTableSelectionModel<T> extends NtmTableSelectionModel<T>
 {
-    public SnakeNtmTableSelectionModel(JideTable t)
-    {
-        super(t);
-    }
+  public SnakeNtmTableSelectionModel(JideTable t)
+  {
+    super(t);
+  }
 
-    @Override
-    public TableModelCoordinates normalize(int row, int column)
-    {
-        return topModel_.convertToNested(row, column);
-    }
+  @Override
+  public TableModelCoordinates normalize(int row, int column)
+  {
+    return topModel_.convertToNested(row, column);
+  }
 
 }
