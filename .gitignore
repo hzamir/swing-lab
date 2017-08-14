@@ -1,0 +1,17 @@
+# Intellij files are regenerated from maven or too personal (workspace files)
+.idea/libraries/
+.idea/workspace.xml
+.idea/tasks.xml
+*.iml
+
+
+# editor (emacs) backup files
+*~
+
+# Mac specific files
+.DS_Store
+
+# Maven
+log/
+target/
+
