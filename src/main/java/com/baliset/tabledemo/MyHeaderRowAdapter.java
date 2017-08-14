@@ -1,9 +1,9 @@
 package com.baliset.tabledemo;
 
-import com.gfigroup.ts.ui.controls.tablex.DelegatingTableModel;
-import com.gfigroup.ts.ui.controls.tablex.DepthExpandingTableModel;
-import com.gfigroup.ts.ui.controls.tablex.MultiTableModelBase;
-import com.gfigroup.ts.ui.controls.tablex.TableHeaderRowAdapter;
+import com.baliset.ui.controls.tablex.DelegatingTableModel;
+import com.baliset.ui.controls.tablex.DepthExpandingTableModel;
+import com.baliset.ui.controls.tablex.MultiTableModelBase;
+import com.baliset.ui.controls.tablex.TableHeaderRowAdapter;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;

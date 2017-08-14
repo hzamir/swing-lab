@@ -1,8 +1,8 @@
 package com.baliset.tabledemo;
 
 import com.baliset.data.Item;
-import com.gfigroup.ts.ui.controls.tablex.DepthAwareTableCellRenderer;
-import com.gfigroup.ts.ui.controls.tablex.NullCell;
+import com.baliset.ui.controls.tablex.DepthAwareTableCellRenderer;
+import com.baliset.ui.controls.tablex.NullCell;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;

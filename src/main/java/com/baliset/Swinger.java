@@ -3,9 +3,9 @@ package com.baliset;
 import com.baliset.data.DataGenerator;
 import com.baliset.data.Item;
 import com.baliset.tabledemo.*;
-import com.gfigroup.ts.ui.controls.snake.SnakeTable;
-import com.gfigroup.ts.ui.controls.snake.SnakeTableModel;
-import com.gfigroup.ts.ui.controls.tablex.*;
+import com.baliset.ui.controls.snake.SnakeTable;
+import com.baliset.ui.controls.snake.SnakeTableModel;
+import com.baliset.ui.controls.tablex.*;
 import com.jidesoft.grid.TableSelectionModel;
 
 import javax.swing.*;

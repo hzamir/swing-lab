@@ -1,9 +1,9 @@
 package com.baliset.tabledemo;
 
 import com.baliset.data.Item;
-import com.gfigroup.ts.ui.controls.tablex.DelegatingTableModel;
-import com.gfigroup.ts.ui.controls.tablex.DepthTableModel;
-import com.gfigroup.ts.ui.controls.tablex.TableModelCoordinates;
+import com.baliset.ui.controls.tablex.DelegatingTableModel;
+import com.baliset.ui.controls.tablex.DepthTableModel;
+import com.baliset.ui.controls.tablex.TableModelCoordinates;
 import com.jidesoft.grid.CellSpan;
 import com.jidesoft.grid.SpanModel;
 
