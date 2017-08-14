@@ -1,0 +1,11 @@
+license:
+  jide:
+    s1: fuqTdIv4Ny1bhMIotSxZag==
+    s2: Dd9raTIowYywX2dkoPyH1xsV8Fi2Q6SPuZdleTnos0o=
+    s3: M1rYZfbuel6M16i5CvKxWquu56C9o/s2z0GPTv2i61NM4NPVHzx0AE5D6Fgq6/ec
+    
+
+app:
+  defaults:
+    initialRows: 20
+    initialSectors: 4

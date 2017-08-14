@@ -9,7 +9,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SwingerApp extends JFrame
+import com.baliset.conf.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
+
+
+@SpringBootApplication
+public class SwingLabApp extends JFrame
 {
   private int sectorItems_;
   private int sectorCount_;
@@ -35,14 +43,10 @@ public class SwingerApp extends JFrame
 
   }
 
+  @Autowired SwingLabDefaultsConfig swingLabDefaultsConfig;
 
-  public SwingerApp(int initialRows, int initialSectors)
+  private void setup(int initialRows, int initialSectors)
   {
-
-    //----- very basic Swing App initialization -----
-    super("SwingerApp");
-
-
     sectorItems_ = initialRows;
     sectorCount_ = initialSectors;
     optionSnaking_ = true;
@@ -185,6 +189,18 @@ public class SwingerApp extends JFrame
 
   }
 
+  public SwingLabApp()
+  {
+    //----- very basic Swing App initialization -----
+    super("SwingLabApp");
+
+
+
+//    setup(swingLabDefaultsConfig.initialRows, swingLabDefaultsConfig.initialSectors);
+    setup(20, 3);
+
+  }
+
 
   private JButton createLaunchButton()
   {
@@ -225,18 +241,20 @@ public class SwingerApp extends JFrame
   {
     lookAndFeel();
 
-    int initialRows = 10;
-    int initialSectors = 3;
 
-    if (args.length > 0) {
-      initialRows = Integer.valueOf(args[0]);
-    }
 
-    if (args.length > 1) {
-      initialSectors = Integer.valueOf(args[1]);
-    }
+  //  JFrame appFrame = new SwingLabApp(initialRows, initialSectors);
 
-    JFrame appFrame = new SwingerApp(initialRows, initialSectors);
+
+
+    ConfigurableApplicationContext ctx = new SpringApplicationBuilder(SwingLabApp.class)
+        .headless(false).run(args);
+
+    EventQueue.invokeLater(() -> {
+      SwingLabApp ex = ctx.getBean(SwingLabApp.class);
+      ex.setVisible(true);
+    });
+
 
   }
 
