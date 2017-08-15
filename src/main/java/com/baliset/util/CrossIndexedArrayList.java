@@ -1,8 +1,8 @@
-package com.baliset.ui.controls.tablex;
+package com.baliset.util;
 
 import java.util.*;
 
-class CrossIndexedArrayList<E> extends AbstractList<E>
+public class CrossIndexedArrayList<E> extends AbstractList<E>
 {
     protected final List<E>       elements_;
     protected final Map<E, int[]> indexes_;
