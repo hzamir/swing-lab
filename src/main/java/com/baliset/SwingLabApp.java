@@ -1,22 +1,26 @@
 package com.baliset;
 
 
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import com.baliset.conf.*;
 import org.springframework.beans.factory.annotation.*;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.boot.autoconfigure.*;
+import org.springframework.boot.builder.*;
+import org.springframework.context.*;
+import org.springframework.context.annotation.*;
+import org.springframework.scheduling.annotation.*;
+
+import javax.swing.*;
+import javax.swing.border.*;
+import javax.swing.event.*;
+import java.awt.*;
+import java.awt.event.*;
 
 
-@SpringBootApplication
+@Configuration
+@EnableAutoConfiguration
+@ComponentScan({"com.baliset"}) // scan both package trees for components
+
+@EnableScheduling
 public class SwingLabApp extends JFrame
 {
   private int sectorItems_;
@@ -29,7 +33,7 @@ public class SwingLabApp extends JFrame
   final String kItemCountPerSector = "# Items/Sector: ";
   final String kSectorCount = "# Sectors: ";
 
-  private void assignAction(int key, int modifier, SwingerAction sa, Action action)
+  private void assignAction(int key, int modifier, SwingLabAction sa, Action action)
   {
     JPanel jc = (JPanel) this.getContentPane();
     ActionMap am = jc.getActionMap();
@@ -204,13 +208,13 @@ public class SwingLabApp extends JFrame
 
   private JButton createLaunchButton()
   {
-    SwingerAction sa = SwingerAction.Launch;
+    SwingLabAction sa = SwingLabAction.Launch;
 
     AbstractAction action = new AbstractAction(sa.getLabel())
     {
       public void actionPerformed(ActionEvent e)
       {
-        new Swinger(sectorItems_, sectorCount_, optionSnaking_, optionDepth_, optionMulti_, optionHeadersForMulti_);
+        new SwingLab(sectorItems_, sectorCount_, optionSnaking_, optionDepth_, optionMulti_, optionHeadersForMulti_);
       }
     };
 

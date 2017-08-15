@@ -1,6 +1,6 @@
 package com.baliset;
 
-public enum SwingerAction
+public enum SwingLabAction
 {
   Append("Add Item"),
   InsertBefore("InsertBefore"),
@@ -23,12 +23,12 @@ public enum SwingerAction
 
   private String label_;
 
-  SwingerAction()
+  SwingLabAction()
   {
     label_ = this.name();
   }
 
-  SwingerAction(String l)
+  SwingLabAction(String l)
   {
     label_ = l;
   }
