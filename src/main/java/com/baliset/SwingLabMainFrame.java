@@ -2,12 +2,9 @@ package com.baliset;
 
 
 import com.baliset.conf.*;
+import org.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
-import org.springframework.boot.autoconfigure.*;
-import org.springframework.boot.builder.*;
-import org.springframework.context.*;
-import org.springframework.context.annotation.*;
-import org.springframework.scheduling.annotation.*;
+import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -16,13 +13,12 @@ import java.awt.*;
 import java.awt.event.*;
 
 
-@Configuration
-@EnableAutoConfiguration
-@ComponentScan({"com.baliset"}) // scan both package trees for components
-
-@EnableScheduling
-public class SwingLabApp extends JFrame
+@Component
+public class SwingLabMainFrame extends JFrame
 {
+  private static final Logger logger = LoggerFactory.getLogger(SwingLabMainFrame.class);
+
+
   private int sectorItems_;
   private int sectorCount_;
 
@@ -30,8 +26,8 @@ public class SwingLabApp extends JFrame
   private boolean optionDepth_;
   private boolean optionMulti_;
   private boolean optionHeadersForMulti_;
-  final String kItemCountPerSector = "# Items/Sector: ";
-  final String kSectorCount = "# Sectors: ";
+  private final String kItemCountPerSector = "# Items/Sector: ";
+  private final String kSectorCount = "# Sectors: ";
 
   private void assignAction(int key, int modifier, SwingLabAction sa, Action action)
   {
@@ -47,7 +43,6 @@ public class SwingLabApp extends JFrame
 
   }
 
-  @Autowired SwingLabDefaultsConfig swingLabDefaultsConfig;
 
   private void setup(int initialRows, int initialSectors)
   {
@@ -193,15 +188,14 @@ public class SwingLabApp extends JFrame
 
   }
 
-  public SwingLabApp()
+  @Autowired public SwingLabMainFrame(SwingLabDefaultsConfig swingLabDefaultsConfig)
   {
     //----- very basic Swing App initialization -----
     super("SwingLabApp");
 
+    logger.info("2. Instantiating SwingLabMainFrame here");
 
-
-//    setup(swingLabDefaultsConfig.initialRows, swingLabDefaultsConfig.initialSectors);
-    setup(20, 3);
+    setup(swingLabDefaultsConfig.initialRows, swingLabDefaultsConfig.initialSectors);
 
   }
 
@@ -224,43 +218,7 @@ public class SwingLabApp extends JFrame
   }
 
 
-  private static void lookAndFeel()
-  {
-    try {
-      // Set cross-platform Java L&F (also called "Metal")
-      UIManager.setLookAndFeel(
-          UIManager.getCrossPlatformLookAndFeelClassName());
-    } catch (UnsupportedLookAndFeelException e) {
-      // handle exception
-    } catch (ClassNotFoundException e) {
-      // handle exception
-    } catch (InstantiationException e) {
-      // handle exception
-    } catch (IllegalAccessException e) {
-      // handle exception
-    }
-  }
 
-  public static void main(String[] args)
-  {
-    lookAndFeel();
-
-
-
-  //  JFrame appFrame = new SwingLabApp(initialRows, initialSectors);
-
-
-
-    ConfigurableApplicationContext ctx = new SpringApplicationBuilder(SwingLabApp.class)
-        .headless(false).run(args);
-
-    EventQueue.invokeLater(() -> {
-      SwingLabApp ex = ctx.getBean(SwingLabApp.class);
-      ex.setVisible(true);
-    });
-
-
-  }
 
 
 }
