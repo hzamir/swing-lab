@@ -1,16 +1,24 @@
 package com.baliset;
 
 
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import com.baliset.conf.*;
+import org.slf4j.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.Component;
 
-public class SwingerApp extends JFrame
+import javax.swing.*;
+import javax.swing.border.*;
+import javax.swing.event.*;
+import java.awt.*;
+import java.awt.event.*;
+
+
+@Component
+public class SwingLabMainFrame extends JFrame
 {
+  private static final Logger logger = LoggerFactory.getLogger(SwingLabMainFrame.class);
+
+
   private int sectorItems_;
   private int sectorCount_;
 
@@ -18,10 +26,10 @@ public class SwingerApp extends JFrame
   private boolean optionDepth_;
   private boolean optionMulti_;
   private boolean optionHeadersForMulti_;
-  final String kItemCountPerSector = "# Items/Sector: ";
-  final String kSectorCount = "# Sectors: ";
+  private final String kItemCountPerSector = "# Items/Sector: ";
+  private final String kSectorCount = "# Sectors: ";
 
-  private void assignAction(int key, int modifier, SwingerAction sa, Action action)
+  private void assignAction(int key, int modifier, SwingLabAction sa, Action action)
   {
     JPanel jc = (JPanel) this.getContentPane();
     ActionMap am = jc.getActionMap();
@@ -36,13 +44,8 @@ public class SwingerApp extends JFrame
   }
 
 
-  public SwingerApp(int initialRows, int initialSectors)
+  private void setup(int initialRows, int initialSectors)
   {
-
-    //----- very basic Swing App initialization -----
-    super("SwingerApp");
-
-
     sectorItems_ = initialRows;
     sectorCount_ = initialSectors;
     optionSnaking_ = true;
@@ -185,16 +188,27 @@ public class SwingerApp extends JFrame
 
   }
 
+  @Autowired public SwingLabMainFrame(SwingLabDefaultsConfig swingLabDefaultsConfig)
+  {
+    //----- very basic Swing App initialization -----
+    super("SwingLabApp");
+
+    logger.info("2. Instantiating SwingLabMainFrame here");
+
+    setup(swingLabDefaultsConfig.initialRows, swingLabDefaultsConfig.initialSectors);
+
+  }
+
 
   private JButton createLaunchButton()
   {
-    SwingerAction sa = SwingerAction.Launch;
+    SwingLabAction sa = SwingLabAction.Launch;
 
     AbstractAction action = new AbstractAction(sa.getLabel())
     {
       public void actionPerformed(ActionEvent e)
       {
-        new Swinger(sectorItems_, sectorCount_, optionSnaking_, optionDepth_, optionMulti_, optionHeadersForMulti_);
+        new SwingLab(sectorItems_, sectorCount_, optionSnaking_, optionDepth_, optionMulti_, optionHeadersForMulti_);
       }
     };
 
@@ -204,41 +218,7 @@ public class SwingerApp extends JFrame
   }
 
 
-  private static void lookAndFeel()
-  {
-    try {
-      // Set cross-platform Java L&F (also called "Metal")
-      UIManager.setLookAndFeel(
-          UIManager.getCrossPlatformLookAndFeelClassName());
-    } catch (UnsupportedLookAndFeelException e) {
-      // handle exception
-    } catch (ClassNotFoundException e) {
-      // handle exception
-    } catch (InstantiationException e) {
-      // handle exception
-    } catch (IllegalAccessException e) {
-      // handle exception
-    }
-  }
 
-  public static void main(String[] args)
-  {
-    lookAndFeel();
-
-    int initialRows = 10;
-    int initialSectors = 3;
-
-    if (args.length > 0) {
-      initialRows = Integer.valueOf(args[0]);
-    }
-
-    if (args.length > 1) {
-      initialSectors = Integer.valueOf(args[1]);
-    }
-
-    JFrame appFrame = new SwingerApp(initialRows, initialSectors);
-
-  }
 
 
 }

@@ -1,10 +1,10 @@
 package com.baliset.ui.controls.tablex;
 
 
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableModel;
+import com.baliset.util.*;
+
+import javax.swing.event.*;
+import javax.swing.table.*;
 
 import static javax.swing.event.TableModelEvent.*;
 
@@ -43,9 +43,9 @@ public class DepthExpandingTableModel<T> extends DelegatingTableModel implements
     }
 
 
-    CrossIndexedArrayList<T>          shallow_;
-    CrossIndexedArrayList<DepthProxy<T>> deep_;
-    final TableCellRendererFactory rendererFactory_;
+    private CrossIndexedArrayList<T> shallow_;
+    private CrossIndexedArrayList<DepthProxy<T>> deep_;
+    private final TableCellRendererFactory rendererFactory_;
 
 
     public DepthExpandingTableModel(DepthTableModel<T> nestedModel, TableCellRendererFactory rendererFactory)

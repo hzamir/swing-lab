@@ -1,7 +1,6 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0" is_locked="false">
     <option name="myName" value="Project Default" />
-    <option name="myLocal" value="false" />
     <inspection_tool class="CStyleArrayDeclaration" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="ContinueStatementWithLabel" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="DoubleLiteralMayBeFloatLiteral" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -77,6 +76,9 @@
       <option name="processComments" value="true" />
     </inspection_tool>
     <inspection_tool class="StringEqualsEmptyString" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="SuspiciousMethodCalls" enabled="false" level="WARNING" enabled_by_default="false">
+      <option name="REPORT_CONVERTIBLE_METHOD_CALLS" value="true" />
+    </inspection_tool>
     <inspection_tool class="SystemOutErr" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="ThreeNegationsPerFunctionJS" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="UnnecessarilyQualifiedStaticUsage" enabled="true" level="WARNING" enabled_by_default="true">
@@ -90,6 +92,5 @@
     <inspection_tool class="UnnecessaryFinalOnParameter" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="onlyWarnOnAbstractMethods" value="false" />
     </inspection_tool>
-    <inspection_tool class="UnnecessaryInterfaceModifier" enabled="true" level="WARNING" enabled_by_default="true" />
   </profile>
 </component>

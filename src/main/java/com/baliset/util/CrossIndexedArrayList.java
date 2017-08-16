@@ -1,28 +1,31 @@
-package com.baliset.ui.controls.tablex;
+package com.baliset.util;
 
 import java.util.*;
 
-class CrossIndexedArrayList<E> extends AbstractList<E>
+public class CrossIndexedArrayList<E> extends AbstractList<E>
 {
-    protected final List<E>       elements_;
-    protected final Map<E, int[]> indexes_;
+    private final List<E>       elements_;
+    private final Map<E, int[]> indexes_;
 
     //------
     public CrossIndexedArrayList()
     {
-        elements_      = new ArrayList<E>();
-        indexes_ =  new HashMap<E, int[]>();
+        elements_      = new ArrayList<>();
+        indexes_ = new HashMap<>();
     }
 
      public CrossIndexedArrayList(int initialCapacity)
     {
-       elements_      = new ArrayList<E>(initialCapacity);
-       indexes_ =  new HashMap<E, int[]>(initialCapacity);
+       elements_      = new ArrayList<>(initialCapacity);
+       indexes_ = new HashMap<>(initialCapacity);
     }
 
     @Override public       E get(int index)        { return elements_.get(index);          }
     @Override public     int size()                { return elements_.size();              }
+
+    @SuppressWarnings("SuspiciousMethodCalls")
     @Override public boolean contains(Object o)    { return indexes_.containsKey(o);       }
+
     @Override public    void clear()               { elements_.clear(); indexes_.clear();  }
 
     @Override
@@ -86,7 +89,8 @@ class CrossIndexedArrayList<E> extends AbstractList<E>
         _updateOffsets(index, -numRows);
     }
 
-    public void insertRows(int index, E... elements)
+    @SafeVarargs
+    public final void insertRows(int index, E... elements)
     {
         int length = elements.length;
 

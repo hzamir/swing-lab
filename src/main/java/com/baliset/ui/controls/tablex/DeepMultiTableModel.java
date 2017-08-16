@@ -1,8 +1,7 @@
 package com.baliset.ui.controls.tablex;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.util.Collection;
+import java.util.*;
 
 public class DeepMultiTableModel extends MultiTableModel implements DepthTableModel
 {
@@ -18,7 +17,7 @@ public class DeepMultiTableModel extends MultiTableModel implements DepthTableMo
     @Override
     public int getDepthByObject(Object o)
     {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     @Override

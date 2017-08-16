@@ -1,27 +1,21 @@
 package com.baliset;
 
-import com.baliset.data.DataGenerator;
-import com.baliset.data.Item;
+import com.baliset.data.*;
 import com.baliset.tabledemo.*;
-import com.baliset.ui.controls.snake.SnakeTable;
-import com.baliset.ui.controls.snake.SnakeTableModel;
+import com.baliset.ui.controls.snake.*;
 import com.baliset.ui.controls.tablex.*;
+import com.baliset.ui.controls.tablex.MultiTableModel;
 import com.baliset.util.*;
-import com.jidesoft.grid.TableSelectionModel;
+import com.jidesoft.grid.*;
 
 import javax.swing.*;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableCellRenderer;
+import javax.swing.table.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+import java.awt.event.*;
+import java.text.*;
+import java.util.*;
 
-public class Swinger extends JFrame
+public class SwingLab extends JFrame
 {
     private final NavTable table_;
     private CMTableColumnRepository tcr_;
@@ -46,16 +40,16 @@ public class Swinger extends JFrame
         com.jidesoft.utils.Lm.verifyLicense(crypto.decryptString(license1), crypto.decryptString(license2), crypto.decryptString(license3));
     }
 
-    public Swinger(int initialRows,
-                   int sectors,
-                   boolean optionSnaking,              // do we incorporate snaking?
-                   boolean optionDepth,                // do we expand depth records?
-                   boolean optionMulti,                // do we show multiple table models?
-                   boolean optionHeadersForMulti       // if multitables, do we show headers?
+    public SwingLab(int initialRows,
+                    int sectors,
+                    boolean optionSnaking,              // do we incorporate snaking?
+                    boolean optionDepth,                // do we expand depth records?
+                    boolean optionMulti,                // do we show multiple table models?
+                    boolean optionHeadersForMulti       // if multitables, do we show headers?
     )
     {
         //----- very basic Swing App initialization -----
-        super("Swinger");
+        super("SwingLab");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         int kWidth = 800;
@@ -239,7 +233,7 @@ public class Swinger extends JFrame
        }
     }
 
-    private void assignAction(int key, int modifier, SwingerAction sa, Action action)
+    private void assignAction(int key, int modifier, SwingLabAction sa, Action action)
     {
           JPanel jc = (JPanel)this.getContentPane();
           ActionMap am = jc.getActionMap();
@@ -346,7 +340,7 @@ public class Swinger extends JFrame
 
     private JButton createExpandCollapseHeaderButton()
     {
-        SwingerAction sa = SwingerAction.ExpandCollapseHeader;
+        SwingLabAction sa = SwingLabAction.ExpandCollapseHeader;
 
         AbstractAction headerAction = new AbstractAction(sa.getLabel())
         {
@@ -386,7 +380,7 @@ public class Swinger extends JFrame
     private JButton showHideButton_ = null;
     private JButton createShowHideButton()
     {
-        SwingerAction sa = SwingerAction.ShowHideColumns;
+        SwingLabAction sa = SwingLabAction.ShowHideColumns;
 
         AbstractAction action = new AbstractAction(sa.getLabel())
         {
@@ -414,7 +408,7 @@ public class Swinger extends JFrame
 
     private JButton createAddButton()
       {
-          SwingerAction sa = SwingerAction.Append;
+          SwingLabAction sa = SwingLabAction.Append;
 
           AbstractAction appendItemAction = new AbstractAction(sa.getLabel())
               {
@@ -504,7 +498,7 @@ public class Swinger extends JFrame
 
     private JButton createDeleteSelectedButton()
     {
-        SwingerAction sa = SwingerAction.DeleteSelected;
+        SwingLabAction sa = SwingLabAction.DeleteSelected;
 
         AbstractAction delSelectedItemAction = new AbstractAction(sa.getLabel())
             {
@@ -547,7 +541,7 @@ public class Swinger extends JFrame
     private JButton createSearchButton(final JTextField txtSearch)
     {
 
-        SwingerAction sa = SwingerAction.Search;
+        SwingLabAction sa = SwingLabAction.Search;
 
         AbstractAction searchAction =  new AbstractAction(sa.getLabel())
         {
@@ -590,7 +584,7 @@ public class Swinger extends JFrame
 
     private JButton createDeleteLastButton()
     {
-        SwingerAction sa = SwingerAction.DeleteLast;
+        SwingLabAction sa = SwingLabAction.DeleteLast;
 
          AbstractAction deleteLastItemAction =  new AbstractAction(sa.getLabel())
             {
@@ -620,7 +614,7 @@ public class Swinger extends JFrame
 
     private JButton createCollapseButton()
     {
-        SwingerAction sa = SwingerAction.Collapse;
+        SwingLabAction sa = SwingLabAction.Collapse;
 
         AbstractAction collapseItemDepthAction =  new AbstractAction(sa.getLabel())
             {
@@ -657,7 +651,7 @@ public class Swinger extends JFrame
     }
 
        private JButton createExpandButton() {
-           SwingerAction sa = SwingerAction.Expand;
+           SwingLabAction sa = SwingLabAction.Expand;
 
            AbstractAction expandDepthAction = new AbstractAction(sa.getLabel()) {
                public void actionPerformed(ActionEvent e) {
