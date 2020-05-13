@@ -4,6 +4,7 @@ import org.slf4j.*;
 import org.springframework.boot.autoconfigure.*;
 import org.springframework.boot.builder.*;
 import org.springframework.context.*;
+import org.springframework.boot.WebApplicationType;
 
 import javax.swing.*;
 
@@ -33,7 +34,7 @@ public class Application
         new
             SpringApplicationBuilder(Application.class)
             .headless(false)
-            .web(false)
+            .web(WebApplicationType.NONE)
             .run(args);
   }
 
